@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.5.6'
+}
+
+group 'ru.n1ra.alidi'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '5.3.12.RELEASE'
+    springBootVersion = '2.5.4'
+    lombokVersion = '1.18.20'
+    caffeineVersion = '3.1.0'
+    validatorVersion = '6.2.0.Final'
+    junitVersion = '5.8.1'
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: springBootVersion
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: validatorVersion
+    developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version: springBootVersion
+
+    // Utils
+    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: caffeineVersion
+
+    // Lombok
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+    // Testing
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+}
+
+test { useJUnitPlatform() }
